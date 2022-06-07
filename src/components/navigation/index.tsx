@@ -14,6 +14,7 @@ const Nav = styled.nav`
   padding-left: 1.5em;
   padding-right: 3em;
   border-right: 1px solid #dadada;
+  min-width: 250px;
 `;
 
 const Ul = styled.ul`
@@ -40,7 +41,7 @@ function Navigation() {
     <Nav>
       <Ul>
         {links.map((link) => (
-          <Li>
+          <Li key={link.path}>
             <Link to={link.path}>
               <Icon icon={link.icon} />
               <P>{link.name}</P>

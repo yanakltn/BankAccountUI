@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import styled from "styled-components";
-import accounts from "../../data/Accounts";
 import Currency from "../../types/Currency";
 import H3 from "../../typography/H3";
 import AccountActionItems from "./AccountActionItems";
@@ -10,6 +9,7 @@ type Props = {
   selected: Currency;
   onSelect: (value: Currency) => void;
   showActionBar: boolean;
+  accounts: Currency[];
 };
 
 const Layout = styled.div`
@@ -24,7 +24,7 @@ const List = styled.div`
   flex: 1;
 `;
 
-function AccountsList({ selected, onSelect, showActionBar }: Props) {
+function AccountsList({ selected, onSelect, showActionBar, accounts }: Props) {
   return (
     <Layout>
       <H3>Your accounts</H3>

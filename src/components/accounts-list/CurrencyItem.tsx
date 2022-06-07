@@ -35,6 +35,18 @@ const Layout = styled.div`
     background-color: white !important;
     color: #fb4b69;
   }
+
+  &.selected::before {
+    width: 10px;
+    height: 10px;
+    position: absolute;
+    left: -1.5em;
+    background-color: #fd3a6c;
+    content: "";
+    top: 50%;
+    transform: translate(0, -50%);
+    border-radius: 100%;
+  }
 `;
 
 const CurrencyText = styled(P)`
