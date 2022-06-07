@@ -1,24 +1,45 @@
-import React from "react";
+import React, { useState } from "react";
+import styled from "styled-components";
 import accounts from "../../data/Accounts";
+import Currency from "../../types/Currency";
+import H3 from "../../typography/H3";
 import AccountActionItems from "./AccountActionItems";
 import CurrencyItem from "./CurrencyItem";
 
-function AccountsList() {
+type Props = {
+  selected: Currency;
+  onSelect: (value: Currency) => void;
+  showActionBar: boolean;
+};
+
+const Layout = styled.div`
+  padding-left: 2.5em;
+  padding-right: 2.5em;
+  padding-top: 1em;
+  display: flex;
+  flex-direction: column;
+`;
+
+const List = styled.div`
+  flex: 1;
+`;
+
+function AccountsList({ selected, onSelect, showActionBar }: Props) {
   return (
-    <div>
-      <h3>Your accounts</h3>
-      <div>
+    <Layout>
+      <H3>Your accounts</H3>
+      <List>
         {accounts.map((acc) => (
           <CurrencyItem
-            title={acc.title}
-            currency={acc.currency}
-            balance={acc.balance}
+            currency={acc}
+            selected={acc === selected}
             key={acc.currency}
+            onClick={() => onSelect(acc)}
           />
         ))}
-      </div>
-      <AccountActionItems />
-    </div>
+      </List>
+      {showActionBar && <AccountActionItems />}
+    </Layout>
   );
 }
 export default AccountsList;

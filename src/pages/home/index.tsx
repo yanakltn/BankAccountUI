@@ -12,14 +12,20 @@ const Layout = styled(Row)`
 `;
 
 function Home() {
+  const [selected, setSelected] = React.useState(accounts[0]);
+
   return (
     <Layout>
       <Navigation />
-      <AccountsList />
+      <AccountsList
+        selected={selected}
+        onSelect={setSelected}
+        showActionBar={true}
+      />
       <CurrencyAccountProfile
-        balance={accounts[0].balance}
-        currency={accounts[0].currency}
-        title={accounts[0].title}
+        balance={selected.balance}
+        currency={selected.currency}
+        title={selected.title}
       />
     </Layout>
   );

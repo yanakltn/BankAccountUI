@@ -1,4 +1,4 @@
-import { IconName, IconProp } from "@fortawesome/fontawesome-svg-core";
+import { IconProp } from "@fortawesome/fontawesome-svg-core";
 
 type Link = {
   name: string;
